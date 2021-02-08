@@ -1,0 +1,59 @@
+$button-color-one: rgb(153, 51, 255) 0%;
+$button-color-two: rgb(255, 102, 102) 100%;
+$icon-color: rgb(44, 83, 255);
+
+.container {
+  padding: 0;
+
+  input {
+    appearance: none;
+    border-radius: 0px;
+    font-weight: normal;
+    width: 100%;
+    border: 0px;
+    margin: 0px;
+    z-index: 2;
+    height: 52px;
+    letter-spacing: 1px;
+    font-size: 18px;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  button {
+    background: linear-gradient(45deg, $button-color-one, $button-color-two);
+
+    &:focus {
+      box-shadow: none;
+    }
+    &:hover i {
+      color: $icon-color;
+    }
+  }
+
+  i {
+    font-size: 24px;
+    color: #fff;
+    transition: all ease-in-out 0.3s;
+  }
+
+  .error {
+    position: relative;
+    top: -10px;
+    color: red;
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.6s ease;
+
+    &.show {
+      position: relative;
+      top: -5px;
+      line-height: normal;
+      font-size: 14px;
+      opacity: 1;
+      opacity: 1;
+    }
+  }
+}
