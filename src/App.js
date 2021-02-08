@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Gifs from './components/Gifs/Gifs';
+import SearchInput from './components/SearchInput/SearchInput';
+import logo from './images/giphy-logo-1.svg';
 
 function App() {
+  const getUserInput = (data) => {
+    console.log(data);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="container">
+      <nav>
+        <img src={logo} alt="logo"/>
+        <h1>GIPHY</h1>
+      </nav>
+     <SearchInput getUserInput={getUserInput}/>
+      </div>
     </div>
   );
 }
