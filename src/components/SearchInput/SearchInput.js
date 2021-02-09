@@ -4,13 +4,13 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 
-const SearchInput = ({ getUserInput }) => {
+const SearchInput = ({ userSearchInput }) => {
   const [userInput, setUserInput] = useState('');
   const [error, setError] = useState(false);
 
   const validate = (input) => {
     const letters = /^[a-zA-Z0-9 ]*$/;
-    input.match(letters) ? getUserInput(userInput) : setError(true);
+    input.match(letters) ? userSearchInput(userInput) : setError(true);
 
     setTimeout(() => {
       setError(false);
@@ -18,7 +18,7 @@ const SearchInput = ({ getUserInput }) => {
   };
 
   return (
-    <div className="container">
+    <div className="input_container">
       <InputGroup className="mb-3">
         <FormControl
           placeholder="Search all the GIFs and Stickers"
