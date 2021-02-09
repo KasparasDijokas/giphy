@@ -10,9 +10,9 @@ import uuid from 'react-uuid';
 
 function App() {
   const [offset, setOffset] = useState(0);
-  const [data, setData] = useState([]);
+  const [data] = useState([]);
   const [loader, setLoader] = useState(false);
-  const [userSearchTerm, setUserSearchTerm] = useState('');
+  const [userSearchTerm, setUserSearchTerm] = useState('cat');
   const [modalState, setModalState] = useState(false);
   const [gifLink, setGifLink] = useState('');
 
@@ -64,7 +64,9 @@ function App() {
             <h1>GIPHY</h1>
           </nav>
           <SearchInput userSearchInput={userSearchInput} />
-          <h2>{error ? error : userSearchTerm}</h2>
+          <h2>
+            {error ? error : userSearchTerm} <span>{totalGifsCount} Gifs</span>
+          </h2>
         </header>
         <div className="gifs__container">
           <InfiniteScroll

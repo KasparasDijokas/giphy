@@ -19,7 +19,15 @@ const useGifSearch = (keyword, offset, data) => {
         `https://api.giphy.com/v1/gifs/search?api_key=NIC2mM6UGbGBO2GKMN0rpf1d5PHffluH&q=${keyword}&limit=12&offset=${offset}&rating=g&lang=en`
       )
       .then((res) => {
-        !totalGifsCount && setTotalGifsCount(res.data.pagination.total_count); // set total gifs count
+        // set total gifs count
+        totalGifsCount !== res.data.pagination.total_count &&
+          setTotalGifsCount(res.data.pagination.total_count);
+
+        // show error if no gif where found
+        res.data.data.length === 0
+          ? setError(`No GIFs found for ${keyword}`)
+          : setError(``);
+
         res.data.data.forEach((item) => {
           setGifs((prevGifs) => {
             return [...prevGifs, item.images.original.url];

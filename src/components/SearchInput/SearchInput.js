@@ -8,24 +8,31 @@ const SearchInput = ({ userSearchInput }) => {
   const [userInput, setUserInput] = useState('');
   const [error, setError] = useState(false);
 
+
   const validate = (input) => {
     const letters = /^[a-zA-Z0-9 ]*$/;
-    input.match(letters) ? userSearchInput(userInput) : setError(true);
+    input.match(letters) && input.length < 30 ? userSearchInput(userInput) : setError(true);
 
     setTimeout(() => {
       setError(false);
-    }, 2000);
+    }, 3000);
   };
 
   return (
     <div className="input_container">
       <InputGroup className="mb-3">
         <FormControl
-          placeholder="Search all the GIFs and Stickers"
-          aria-label="Search all the GIFs and Stickers"
+          placeholder="Search all the GIFs"
+          aria-label="Search all the GIFs"
           aria-describedby="basic-addon2"
           onChange={(e) => setUserInput(e.target.value)}
           value={userInput}
+          type="input"
+          onKeyPress={(event) => {
+            if (event.key === 'Enter') {
+              validate(userInput);
+            }
+          }}
         />
         <InputGroup.Append>
           <Button
@@ -37,7 +44,7 @@ const SearchInput = ({ userSearchInput }) => {
         </InputGroup.Append>
       </InputGroup>
       <p className={error ? `error show` : `error`}>
-        Only letters and numbers are allowed
+        Only letters and numbers are allowed. Search term cannot be longer than 30 characters.
       </p>
     </div>
   );

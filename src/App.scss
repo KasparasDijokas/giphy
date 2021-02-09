@@ -8,6 +8,7 @@
 
     h2 {
       color: #fff;
+      padding-left: 15px;
     }
 
     img {
@@ -26,6 +27,16 @@
         margin: 0;
         align-self: flex-end;
       }
+    }
+
+    span {
+      color: rgb(166, 166, 166);
+      padding-left: 0.4em;
+      text-transform: none;
+      font-size: 14px;
+      white-space: pre;
+      font-family: interface;
+      font-weight: 700;
     }
   }
 
